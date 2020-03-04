@@ -9,79 +9,42 @@
     var Username = Request.Form["Username"];
     var Password = Request.Form["Password"];
 
-    if (IsPost && Validation.IsValid())
-    {
-        // Define the insert query. The values to assign to the
-        // columns in the Product table are defined as parameters
-        // with the VALUES keyword.
-        if (ModelState.IsValid)
-        {
-            var insertQuery = "INSERT INTO Product (Id, Username, Password) " +
-                "VALUES (@0, @1, @2)";
-            db.Execute(insertQuery, Id, Username, Password);
-            // Display the page that lists products.
-            Response.Redirect("~/ListProducts");
-        }
-    }
+    var selectQueryString = "SELECT * FROM Product ORDER BY Name";
 }
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Products</title>
-    <style type="text/css">
-        label {
-            float: left;
-            width: 8em;
-            text-align: right;
-            margin-right: 0.5em;
-        }
-
-        fieldset {
-            padding: 1em;
-            border: 1px solid;
-            width: 50em;
-        }
-
-        legend {
-            padding: 2px 4px;
-            border: 1px solid;
-            font-weight: bold;
-        }
-
-        .validation-summary-errors {
-            font-weight: bold;
-            color: red;
-            font-size: 11pt;
+    <title>Small Bakery Products</title>
+    <style>
+        table, th, td {
+            border: solid 1px #bbbbbb;
+            border-collapse: collapse;
+            padding: 2px;
         }
     </style>
 </head>
 <body>
-    <h1>Add New Product</h1>
-
-    @Html.ValidationSummary("Errors with your submission:")
-
-    <form method="post" action="">
-        <fieldset>
-            <legend>Add Product</legend>
-            <div>
-                <label>Id:</label>
-                <input id="Id" type="text" size="50" value="@Id" />
-            </div>
-            <div>
-                <label>Username:</label>
-                <input Id="Username" type="text" size="50"
-                       value="@Username" />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input id="Password" type="text" size="50" value="@Password" />
-            </div>
-            <div>
-                <label>&nbsp;</label>
-                <input type="submit" value="Insert" class="submit" />
-            </div>
-        </fieldset>
-    </form>
+    <h1>Small Bakery Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in db.Query(selectQueryString))
+            {
+                <tr>
+                    <td>@row.Id</td>
+                    <td>@row.Name</td>
+                    <td>@row.Description</td>
+                    <td>@row.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>
