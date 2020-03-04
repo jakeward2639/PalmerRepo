@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccessDatabase.aspx" />
+    <Content Include="App_Data\PalmerDatabase.mdf" />
+    <Content Include="App_Data\PalmerDatabase_log.ldf">
+      <DependentUpon>PalmerDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="CreateAccount.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="StyleSheet.css" />
