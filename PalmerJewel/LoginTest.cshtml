@@ -1,12 +1,12 @@
 ﻿@{
     Validation.RequireField("Id", "Product Id is required.");
-    Validation.RequireField("Description", "Product description is required.");
-    Validation.RequireField("Price", "Product price is required.");
+    Validation.RequireField("Username", "Product username is required.");
+    Validation.RequireField("Password", "Product password is required.");
 
     var db = Database.Open("PalmerDatabase");
     var Id = Request.Form["Id"];
-    var Description = Request.Form["Description"];
-    var Price = Request.Form["Price"];
+    var Username = Request.Form["Username"];
+    var Password = Request.Form["Password"];
 
     if (IsPost && Validation.IsValid())
     {
@@ -15,9 +15,9 @@
         // with the VALUES keyword.
         if (ModelState.IsValid)
         {
-            var insertQuery = "INSERT INTO Product (Id, Description, Price) " +
+            var insertQuery = "INSERT INTO Product (Id, Username, Password) " +
                 "VALUES (@0, @1, @2)";
-            db.Execute(insertQuery, Id, Description, Price);
+            db.Execute(insertQuery, Id, Username, Password);
             // Display the page that lists products.
             Response.Redirect("~/ListProducts");
         }
@@ -68,13 +68,13 @@
                 <input id="Id" type="text" size="50" value="@Id" />
             </div>
             <div>
-                <label>Description:</label>
-                <input Id="Description" type="text" size="50"
-                       value="@Description" />
+                <label>Username:</label>
+                <input Id="Username" type="text" size="50"
+                       value="@Username" />
             </div>
             <div>
-                <label>Price:</label>
-                <input id="Price" type="text" size="50" value="@Price" />
+                <label>Password:</label>
+                <input id="Password" type="text" size="50" value="@Password" />
             </div>
             <div>
                 <label>&nbsp;</label>
