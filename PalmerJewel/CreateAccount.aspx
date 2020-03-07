@@ -16,10 +16,14 @@
         <div>            
         </div>       
         <p>
-            <input id="UsernameCreate" type="text" /></p>
+            <asp:TextBox ID="UsernameCreate" runat="server"></asp:TextBox>
+        </p>
         <p>
-            <input id="PasswordCreate" type="text" /></p>
+            <asp:TextBox ID="PasswordCreate" runat="server"></asp:TextBox>
+        </p>
         <asp:Button ID="SubmitAccountRequest" runat="server" OnClick="SubmitAccountRequest_Click" Text="Login" />
+        </div>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:PalmerConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
