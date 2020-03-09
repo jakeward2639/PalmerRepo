@@ -12,7 +12,7 @@ namespace PalmerJewel
 {
     public partial class CreateAccount : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["PalmerConnectionString"].ConnectionString);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["YIKESConnectionString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
         }

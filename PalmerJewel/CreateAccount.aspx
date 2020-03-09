@@ -23,7 +23,7 @@
         </p>
         <asp:Button ID="SubmitAccountRequest" runat="server" OnClick="SubmitAccountRequest_Click" Text="Login" />
         </div>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:PalmerConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
