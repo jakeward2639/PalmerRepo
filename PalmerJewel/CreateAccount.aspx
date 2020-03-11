@@ -17,10 +17,11 @@
         </div>       
         <p>
             <asp:TextBox ID="UsernameCreate" runat="server"></asp:TextBox>
+            <asp:Label ID="ErrorLabel1" runat="server" Text="Enter Username"></asp:Label>
         </p>
         <p>
             <asp:TextBox ID="PasswordCreate" runat="server"></asp:TextBox>
-            <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="ErrorLabel" runat="server" Text="Enter Password"></asp:Label>
         </p>
         <asp:Button ID="SubmitAccountRequest" runat="server" OnClick="SubmitAccountRequest_Click" Text="Login" />
         </div>

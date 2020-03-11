@@ -15,12 +15,15 @@ namespace PalmerJewel
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["YIKESConnectionString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
+            //ErrorLabel1.Text = "Enter Username";
+            //ErrorLabel.Text = "Enter Password";
         }
 
         protected void SubmitAccountRequest_Click(object sender, EventArgs e)
         {
             bool exists = false;
-            string passwordvalid = Convert.ToString(PasswordCreate);
+            string passwordvalid = Convert.ToString(PasswordCreate.Text);
+            int capscheck = 0;
 
             using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where Username = @Username", con))
             {
@@ -31,9 +34,19 @@ namespace PalmerJewel
             }
             if (exists)
             {
-                ErrorLabel.Text = "This username already exists";
-            }               
-            else if (passwordvalid.ToLower() == passwordvalid) //get this working could be if else but probs lower case
+                ErrorLabel1.Text = "This username already exists";
+                
+            }
+            for (int i = 0; i < PasswordCreate.Text.Length; i++)
+            {
+                char passwordvalidchar = passwordvalid[i];
+                bool result = Char.IsUpper(passwordvalidchar);
+                if (result == true)
+                {
+                    capscheck = capscheck + 1;
+                }
+            }
+            if (capscheck == 0)  //get this working could be if else but probs lower case
             {
                 ErrorLabel.Text = "Password must contain at least one capital letter";
             }
