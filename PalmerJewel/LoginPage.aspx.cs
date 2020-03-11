@@ -19,13 +19,39 @@ namespace PalmerJewel
 
         protected void SubmitLoginRequest_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("dbo.ProcedureCreateUser", con);
-            con.Open();
-            cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = usertxt.Text;
-            cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = passtxt.Text;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            bool exists = false;
+
+            using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where Username = @Username", con))
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("Username", usertxt.Text);
+                exists = (int)cmd.ExecuteScalar() > 0;
+                con.Close();
+            }
+            if (exists)
+            {
+                using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where Password = @Password", con))
+                {
+                    con.Open();
+                    cmd.Parameters.AddWithValue("Password", passtxt.Text);
+                    exists = (int)cmd.ExecuteScalar() > 0;
+                    con.Close();
+                }
+                if (exists)
+                {
+                    Response.Redirect("AccessDatabase.aspx");
+                }
+
+
+                //SqlCommand cmd = new SqlCommand("dbo.ProcedureCreateUser", con);
+                //con.Open();
+                //cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = usertxt.Text;
+                //cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = passtxt.Text;
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.ExecuteNonQuery();
+                //con.Close();
+            }
+            
         }
     }
 }
