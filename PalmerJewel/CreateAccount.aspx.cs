@@ -19,13 +19,34 @@ namespace PalmerJewel
 
         protected void SubmitAccountRequest_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("dbo.ProcedureCreateUser", con);
-            con.Open();
-            cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = UsernameCreate.Text;
-            cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = PasswordCreate.Text;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            bool exists = false;
+            string passwordvalid = Convert.ToString(PasswordCreate);
+
+            using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where Username = @Username", con))
+            {
+                con.Open();
+                cmd.Parameters.AddWithValue("Username", UsernameCreate.Text);
+                exists = (int)cmd.ExecuteScalar() > 0;
+                con.Close();
+            }
+            if (exists)
+            {
+                ErrorLabel.Text = "This username already exists";
+            }               
+            else if (passwordvalid.ToLower() == passwordvalid) //get this working could be if else but probs lower case
+            {
+                ErrorLabel.Text = "Password must contain at least one capital letter";
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("dbo.ProcedureCreateUser", con);
+                con.Open();
+                cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = UsernameCreate.Text;
+                cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = PasswordCreate.Text;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
         }
     }
 }
