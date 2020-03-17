@@ -57,7 +57,7 @@ namespace PalmerJewel
                     }
                     if (tfpermission == 2)
                     {
-                        //Response.Redirect("PlaceOrder.aspx");
+                        Response.Redirect("PlaceOrder.aspx");
                     }
                     
                 }

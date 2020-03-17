@@ -10,8 +10,15 @@
 <body>
     <form id="form1" runat="server">
         <div>           
-            <asp:GridView ID="DatabaseAccess" runat="server" OnSelectedIndexChanged="DatabaseAccess_SelectedIndexChanged">
+            <asp:GridView ID="DatabaseAccess" runat="server" OnSelectedIndexChanged="DatabaseAccess_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
+                    <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
+                    <asp:BoundField DataField="Permission" HeaderText="Permission" SortExpression="Permission" />
+                </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
         </div>
     </form>
 </body>
