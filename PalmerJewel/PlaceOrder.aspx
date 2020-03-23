@@ -7,8 +7,7 @@
     <title>PlaceOrder</title>
     <h2>Place Order</h2>
 </head>
-<body>
-    <form id="form1" runat="server">
+<body>    
         <div>
             Named DogTag</div>
         <asp:Button ID="OrderDT" runat="server" Text="Order" OnClick="OrderDT_Click" />

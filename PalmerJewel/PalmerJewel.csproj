@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccessDatabase.aspx" />
+    <Content Include="Checkout.aspx" />
     <Content Include="CreateAccount.aspx" />
     <Content Include="LoginPage.aspx" />
     <Content Include="PlaceOrder.aspx" />
@@ -105,6 +106,13 @@
     </Compile>
     <Compile Include="AccessDatabase.aspx.designer.cs">
       <DependentUpon>AccessDatabase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="CreateAccount.aspx.cs">
       <DependentUpon>CreateAccount.aspx</DependentUpon>

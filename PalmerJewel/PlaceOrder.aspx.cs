@@ -25,7 +25,7 @@ namespace PalmerJewel
             cmd.Parameters.Add("@DateOrdered", SqlDbType.Date).Value = now;
             cmd.Parameters.Add("@retord", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery(); //try using insert into where instead of @s
             con.Close();
             int orderid = (int)cmd.Parameters["@retord"].Value;
         }
