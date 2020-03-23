@@ -11,15 +11,16 @@
     <form id="form1" runat="server">
         <div>
             Named DogTag</div>
-        <asp:Button ID="OrderDT" runat="server" Text="Order" />
+        <asp:Button ID="OrderDT" runat="server" Text="Order" OnClick="OrderDT_Click" />
         <br />
         <br />
         YIKES Necklace<br />
-        <asp:Button ID="OrderYN" runat="server" Text="Order" />
+        <asp:Button ID="OrderYN" runat="server" Text="Order" OnClick="OrderYN_Click" />
         <br />
         <br />
         YIKES Ring<br />
-        <asp:Button ID="OrderYR" runat="server" Text="Order" />
-    </form>
-</body>
-</html>
+        <asp:Button ID="OrderYR" runat="server" Text="Order" OnClick="OrderYR_Click" />
+        <br />
+        <br />
+        <asp:Button ID="ToCheckout" runat="server" Text="To Checkout" OnClick="ToCheckout_Click" />
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Orders]"></asp:SqlDataSource>

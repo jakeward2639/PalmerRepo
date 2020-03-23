@@ -53,11 +53,11 @@ namespace PalmerJewel
                     con.Close();
                     if (tfpermission == 1)
                     {                        
-                        Response.Redirect("AccessDatabase.aspx");
+                        Response.Redirect("AccessDatabase.aspx?Username=usertxt.Text");
                     }
                     if (tfpermission == 2)
                     {
-                        Response.Redirect("PlaceOrder.aspx");
+                        Response.Redirect("PlaceOrder.aspx?Username=usertxt.Text");
                     }
                     
                 }

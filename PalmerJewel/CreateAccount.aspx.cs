@@ -59,6 +59,7 @@ namespace PalmerJewel
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 con.Close();
+                Response.Redirect("LoginPage.aspx");
             }
         }
     }
