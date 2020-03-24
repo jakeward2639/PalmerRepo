@@ -1,23 +1,24 @@
 ﻿CREATE PROCEDURE [dbo].[CreateOrder]
 	@DateOrdered date,
-	@Username varchar(16),
-	@UserId int,
-	@retord int,
-	@CurrentOrder int
+	@Username varchar(16)
 AS
-	SELECT @UserId = Id
+	DECLARE @UserId int
+	DECLARE @CurrentOrder int
+	DECLARE @retord int
+
+	SELECT @UserId = Id                           
 	FROM Users
 	WHERE Username = @Username
 
 	SELECT @CurrentOrder = FLOOR(RAND()*(10000-0+1)+0);
 
-	INSERT INTO Users(CurrentOrder)
-	SELECT (@CurrentOrder)
+	UPDATE Users
+	SET CurrentOrder = @CurrentOrder
 	WHERE Username = @Username
 
 	SELECT @CurrentOrder = CurrentOrder
 	FROM Users
-	WHERE Id = @UserId;
+	WHERE Id = @UserId
 
 	INSERT INTO Orders(OrderId, Id, DateOrdered)
 	VALUES (@CurrentOrder, @UserId, @DateOrdered)

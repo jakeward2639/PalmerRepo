@@ -7,7 +7,8 @@
     <title>PlaceOrder</title>
     <h2>Place Order</h2>
 </head>
-<body>    
+<body>   
+    <form id="form1" runat="server">
         <div>
             Named DogTag</div>
         <asp:Button ID="OrderDT" runat="server" Text="Order" OnClick="OrderDT_Click" />
@@ -23,3 +24,5 @@
         <br />
         <asp:Button ID="ToCheckout" runat="server" Text="To Checkout" OnClick="ToCheckout_Click" />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Orders]"></asp:SqlDataSource>
+   </form>
+</body>
