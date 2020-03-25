@@ -4,11 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>checkout</title>
+    <div class="w3-container">
+        <h2>Checkout</h2>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="OrderandPay" runat="server" Text="Order and Pay" />
         </div>
     </form>
 </body>

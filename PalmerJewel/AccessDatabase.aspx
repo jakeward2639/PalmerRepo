@@ -10,16 +10,20 @@
 <body>
     <form id="form1" runat="server">
         <div>           
-            <asp:GridView ID="DatabaseAccess" runat="server" OnSelectedIndexChanged="DatabaseAccess_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                    <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
-                    <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
-                    <asp:BoundField DataField="Permission" HeaderText="Permission" SortExpression="Permission" />
-                </Columns>
+            <asp:GridView ID="DatabaseAccess" runat="server">
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
         </div>
+        <br />
+        <asp:DropDownList ID="SelectTable" runat="server">
+            <asp:ListItem>Users</asp:ListItem>
+            <asp:ListItem>Products</asp:ListItem>
+            <asp:ListItem>Orders</asp:ListItem>
+            <asp:ListItem>OrderDetails</asp:ListItem>
+            <asp:ListItem>OrderAddress</asp:ListItem>
+        </asp:DropDownList>
+        <asp:TextBox ID="search" runat="server"></asp:TextBox>
+        <asp:Button ID="searchButton" runat="server" OnClick="Button1_Click" Text="Search" />
     </form>
 </body>
 </html>
