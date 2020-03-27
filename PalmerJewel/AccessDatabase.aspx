@@ -15,7 +15,7 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
         </div>
         <br />
-        <asp:DropDownList ID="SelectTable" runat="server">
+        <asp:DropDownList ID="SelectTable" runat="server" OnSelectedIndexChanged="SelectTable_SelectedIndexChanged">
             <asp:ListItem>Users</asp:ListItem>
             <asp:ListItem>Products</asp:ListItem>
             <asp:ListItem>Orders</asp:ListItem>

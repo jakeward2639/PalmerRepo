@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button ID="OrderandPay" runat="server" Text="Order and Pay" />
+            <asp:Button ID="OrderandPay" runat="server" Text="Order and Pay" OnClick="OrderandPay_Click" />
         </div>
     </form>
 </body>

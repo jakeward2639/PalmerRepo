@@ -17,7 +17,7 @@ namespace PalmerJewel
         {
             string Name = Request.QueryString["Username"];
             DateTime now = DateTime.Now;
-
+            Label1.Text = Name;
 
             SqlCommand cmd = new SqlCommand("dbo.CreateOrder", con);
             con.Open();
@@ -25,7 +25,7 @@ namespace PalmerJewel
             cmd.Parameters.Add("@DateOrdered", SqlDbType.Date).Value = now;
             cmd.Parameters.Add("@retord", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery(); //try using insert into where instead of @s
+            cmd.ExecuteNonQuery(); //isnt accessing users at all, try one procedure for users one of orders
             con.Close();
             int orderid = (int)cmd.Parameters["@retord"].Value;
         }
@@ -51,5 +51,7 @@ namespace PalmerJewel
         {
 
         }
+
+
     }
 }

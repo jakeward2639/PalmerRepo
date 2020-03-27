@@ -13,5 +13,10 @@ namespace PalmerJewel
         {
 
         }
+
+        protected void OrderandPay_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

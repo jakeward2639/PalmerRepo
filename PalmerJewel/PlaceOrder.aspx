@@ -20,9 +20,10 @@
         <br />
         YIKES Ring<br />
         <asp:Button ID="OrderYR" runat="server" Text="Order" OnClick="OrderYR_Click" />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
-        <asp:Button ID="ToCheckout" runat="server" Text="To Checkout" OnClick="ToCheckout_Click" />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Orders]"></asp:SqlDataSource>
+        <asp:Button ID="ToCheckout" runat="server" Text="To Checkout" OnClick="ToCheckout_Click" /> 
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:YIKESConnectionString %>" SelectCommand="SELECT * FROM [Orders, Users]" ></asp:SqlDataSource>
    </form>
 </body>

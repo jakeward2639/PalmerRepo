@@ -17,10 +17,34 @@ namespace PalmerJewel
         {
 
         }
-
+        protected void SelectTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            String str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+            
+            if (SelectTable.SelectedItem.Text == "Users")
+            {
+                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+            }
+            if (SelectTable.SelectedItem.Text == "Products")
+            {
+                String stri = "select * from Products where (Username like '%' + @search + '%')"; //wildcard variables like
+            }
+            if (SelectTable.SelectedItem.Text == "Orders")
+            {
+                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+            }
+            if (SelectTable.SelectedItem.Text == "OrderDetails")
+            {
+                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+            }
+            if (SelectTable.SelectedItem.Text == "OrderAddress")
+            {
+                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+            }
+            String str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like; //make global variable
             SqlCommand ad = new SqlCommand(str, con);
             ad.Parameters.Add("@search", SqlDbType.NVarChar).Value = search.Text;
             con.Open();
@@ -34,5 +58,6 @@ namespace PalmerJewel
             con.Close();
 
         }
+
     }
 }

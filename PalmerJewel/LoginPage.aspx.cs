@@ -49,15 +49,14 @@ namespace PalmerJewel
                   
                     cmd.ExecuteReader();
                     int tfpermission = (int)cmd.Parameters["@retper"].Value;
-                    usertxt.Text = Convert.ToString(tfpermission);
                     con.Close();
                     if (tfpermission == 1)
                     {                        
-                        Response.Redirect("AccessDatabase.aspx?Username=usertxt.Text");
+                        Response.Redirect("AccessDatabase.aspx?Username=" + usertxt.Text);
                     }
                     if (tfpermission == 2)
                     {
-                        Response.Redirect("PlaceOrder.aspx?Username=usertxt.Text");
+                        Response.Redirect("PlaceOrder.aspx?Username=" + usertxt.Text);
                     }
                     
                 }
