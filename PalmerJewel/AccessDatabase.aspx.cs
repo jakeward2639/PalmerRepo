@@ -28,6 +28,7 @@ namespace PalmerJewel
             if (SelectTable.SelectedItem.Text == "Users")
             {
                 str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+                //matbe make it so when selected it loads the table in its entirety
             }
             if (SelectTable.SelectedItem.Text == "Products")
             {
