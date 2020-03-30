@@ -13,11 +13,12 @@ namespace PalmerJewel
     public partial class PlaceOrder : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["YIKESConnectionString"].ConnectionString);
+        int orderid = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             string Name = Request.QueryString["Username"];
             DateTime now = DateTime.Now;
-            Label1.Text = Name;
+            
 
             SqlCommand cmd = new SqlCommand("dbo.CreateOrder", con);
             con.Open();
@@ -33,8 +34,12 @@ namespace PalmerJewel
 
         protected void OrderDT_Click(object sender, EventArgs e)
         {
-
-            
+            SqlCommand cmd = new SqlCommand("dbo.CreateOrder", con);
+            con.Open();
+            cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = orderid;
+            cmd.Parameters.Add("@Quantity", SqlDbType.Int).Value = DropDownDT.SelectedItem.Value;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
         }
 
         protected void ToCheckout_Click(object sender, EventArgs e)

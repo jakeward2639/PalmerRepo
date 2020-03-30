@@ -13,6 +13,7 @@ namespace PalmerJewel
     public partial class AccessDatabase : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["YIKESConnectionString"].ConnectionString);
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,28 +24,28 @@ namespace PalmerJewel
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+            String str = "";
             if (SelectTable.SelectedItem.Text == "Users")
             {
-                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+                str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "Products")
             {
-                String stri = "select * from Products where (Username like '%' + @search + '%')"; //wildcard variables like
+                str = "select * from Products where (ProductName like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "Orders")
             {
-                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+                str = "select * from Orders where (Username like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "OrderDetails")
             {
-                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+                str = "select * from OrderDetails where (OrderId like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "OrderAddress")
             {
-                String stri = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
+                str = "select * from OrderAddress where (OrderId like '%' + @search + '%')"; //wildcard variables like
             }
-            String str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like; //make global variable
+            //String str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like; //make global variable
             SqlCommand ad = new SqlCommand(str, con);
             ad.Parameters.Add("@search", SqlDbType.NVarChar).Value = search.Text;
             con.Open();

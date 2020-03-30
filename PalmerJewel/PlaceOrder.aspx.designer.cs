@@ -33,6 +33,15 @@ namespace PalmerJewel
         protected global::System.Web.UI.WebControls.Button OrderDT;
 
         /// <summary>
+        /// DropDownDT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownDT;
+
+        /// <summary>
         /// OrderYN control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace PalmerJewel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button OrderYN;
+
+        /// <summary>
+        /// DropDownYN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownYN;
 
         /// <summary>
         /// OrderYR control.
@@ -51,13 +69,13 @@ namespace PalmerJewel
         protected global::System.Web.UI.WebControls.Button OrderYR;
 
         /// <summary>
-        /// Label1 control.
+        /// DropDownYR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownYR;
 
         /// <summary>
         /// ToCheckout control.
