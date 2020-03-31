@@ -46,7 +46,8 @@ namespace PalmerJewel
 
         protected void ToCheckout_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Checkout.aspx");
+            string Name = Request.QueryString["Username"];
+            Response.Redirect("Checkout.aspx?Username=" + Name);
         }
 
         protected void OrderYN_Click(object sender, EventArgs e)
