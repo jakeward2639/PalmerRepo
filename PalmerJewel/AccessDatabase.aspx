@@ -24,6 +24,10 @@
         </asp:DropDownList>
         <asp:TextBox ID="search" runat="server"></asp:TextBox>
         <asp:Button ID="searchButton" runat="server" OnClick="Button1_Click" Text="Search" />
+        <p>
+            <asp:Label ID="Label1" runat="server" Text="Entires Found "></asp:Label>
+            <asp:Label ID="Entries" runat="server" Text="0"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

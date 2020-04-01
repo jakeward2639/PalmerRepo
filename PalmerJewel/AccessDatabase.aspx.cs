@@ -20,33 +20,83 @@ namespace PalmerJewel
         }
         protected void SelectTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+            
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             String str = "";
             if (SelectTable.SelectedItem.Text == "Users")
             {
+                SqlCommand cmd = new SqlCommand("dbo.CountUsers", con); //this section is to display how many entires were found
+                con.Open();
+                cmd.Parameters.Add("@Input", SqlDbType.VarChar).Value = search.Text;
+                cmd.Parameters.Add("@retcou", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteReader();
+                int retcount = (int)cmd.Parameters["@retcou"].Value;
+                con.Close();
+                Entries.Text = Convert.ToString(retcount);
+
                 str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like
-                //matbe make it so when selected it loads the table in its entirety
+
+                //maybe make it so when selected it loads the table in its entirety
             }
             if (SelectTable.SelectedItem.Text == "Products")
             {
+                SqlCommand cmd = new SqlCommand("dbo.CountProducts", con); //this section is to display how many entires were found
+                con.Open();
+                cmd.Parameters.Add("@Input", SqlDbType.VarChar).Value = search.Text;
+                cmd.Parameters.Add("@retcou", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteReader();
+                int retcount = (int)cmd.Parameters["@retcou"].Value;
+                con.Close();
+                Entries.Text = Convert.ToString(retcount);
+
                 str = "select * from Products where (ProductName like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "Orders")
             {
-                str = "select * from Orders where (Username like '%' + @search + '%')"; //wildcard variables like
+                SqlCommand cmd = new SqlCommand("dbo.CountOrders", con); //this section is to display how many entires were found
+                con.Open();
+                cmd.Parameters.Add("@Input", SqlDbType.VarChar).Value = search.Text;
+                cmd.Parameters.Add("@retcou", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteReader();
+                int retcount = (int)cmd.Parameters["@retcou"].Value;
+                con.Close();
+                Entries.Text = Convert.ToString(retcount);
+
+                str = "select * from Orders where (Id like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "OrderDetails")
             {
+                SqlCommand cmd = new SqlCommand("dbo.CountOrderDetails", con); //this section is to display how many entires were found
+                con.Open();
+                cmd.Parameters.Add("@Input", SqlDbType.VarChar).Value = search.Text;
+                cmd.Parameters.Add("@retcou", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteReader();
+                int retcount = (int)cmd.Parameters["@retcou"].Value;
+                con.Close();
+                Entries.Text = Convert.ToString(retcount);
+
                 str = "select * from OrderDetails where (OrderId like '%' + @search + '%')"; //wildcard variables like
             }
             if (SelectTable.SelectedItem.Text == "OrderAddress")
             {
+                SqlCommand cmd = new SqlCommand("dbo.CountAddresses", con); //this section is to display how many entires were found
+                con.Open();
+                cmd.Parameters.Add("@Input", SqlDbType.VarChar).Value = search.Text;
+                cmd.Parameters.Add("@retcou", System.Data.SqlDbType.Int).Direction = System.Data.ParameterDirection.ReturnValue;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteReader();
+                int retcount = (int)cmd.Parameters["@retcou"].Value;
+                con.Close();
+                Entries.Text = Convert.ToString(retcount);
+
                 str = "select * from OrderAddress where (OrderId like '%' + @search + '%')"; //wildcard variables like
             }
-            //String str = "select * from Users where (Username like '%' + @search + '%')"; //wildcard variables like; //make global variable
             SqlCommand ad = new SqlCommand(str, con);
             ad.Parameters.Add("@search", SqlDbType.NVarChar).Value = search.Text;
             con.Open();
@@ -58,6 +108,7 @@ namespace PalmerJewel
             DatabaseAccess.DataSource = ds;
             DatabaseAccess.DataBind();
             con.Close();
+
 
         }
 
